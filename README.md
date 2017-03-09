@@ -8,8 +8,8 @@ SDK for 3rd party developers to leverage the features of BAZZ.
 * [Usage](#usage)
   * [Preparing your app](#preparing-your-app)
     * [Adding classes](#adding-classes)
-    * [Manifest](#manifest)
     * [Gradle](#gradle)
+    * [Manifest](#manifest)
   * [Initializing the SDK](#initializing)
   * [BAZZ operation modes](#bazz-operation-modes)
   * [Driving detection](#driving-detection)
@@ -100,6 +100,13 @@ public class MyApplication extends Application {
 ```
 
 **Note:** if you already have an '**Application**' class in your app - just add the code explained [below](#initializing)
+
+
+### Gradle
+
+- In your app **build.gradle**, make sure you have **minSdkVersion 16** and **targetSdkVersion 19**.
+
+- Also under **dependencies** add ``` compile 'com.google.android.gms:play-services:7.8.0' ```
 
 
 ### Manifest
@@ -198,19 +205,14 @@ the operation of BAZZ...)
     </service>
 ```
 
-### Gradle
-
-- In your app **build.gradle**, make sure you have **minSdkVersion 16** and **targetSdkVersion 19**.
-
-- Also under **dependencies** add ``` compile 'com.google.android.gms:play-services:7.8.0' ```
-
-
 ## Initializing
 
-- In your '**Application**' java class, add a global instance variable for BazzLib:
+- In your '**Application**' java class, add a global instance variable for BazzLib, and the APP_ID you received from us:
 
 ```java
     public static BazzLib mBazzLib = null;
+    
+    private static final String APP_ID = "<Your BAZZ SDK app id here>";
 ```
 
 - In the '**onCreate**' function, add the following lines:
@@ -226,6 +228,13 @@ the operation of BAZZ...)
             // You must call these functions, too to initialize the app properly
             mBazzLib.setAppName("<Your app user-friendly name>");
             mBazzLib.setMainActivity("<Class name of your main activity (e.g. MainActivity)>");
+
+            // These calls enable treatment of the IM messaging apps
+            mBazzLib.setIncomingWorkWithWhatsapp(true);
+            mBazzLib.setIncomingWorkWithMessenger(true);
+            mBazzLib.setIncomingWorkWithLine(true);
+            mBazzLib.setIncomingWorkWithGmail(true);
+            mBazzLib.setIncomingWorkWithLine(true);
 
             // *** You must add this to enable access to IM messaging apps ***
             bindService(new Intent(getApplicationContext(), BazzNotificationServiceLink.class), new ServiceConnection() {
