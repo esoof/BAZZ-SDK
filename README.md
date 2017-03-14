@@ -812,8 +812,6 @@ To check if this is needed:
 
 ### More settings
 
-***Driver name
-
 You can set driver name / phone / gender:
 
 ```java
