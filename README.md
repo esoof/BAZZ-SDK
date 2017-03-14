@@ -763,7 +763,7 @@ You can get the current setting:
     }
 ```
 
-###Internal setting screens
+### Internal setting screens
 
 **Bluetooth playback devices configuration**
 
@@ -810,7 +810,7 @@ To check if this is needed:
 ```
 
 
-###More settings
+### More settings
 
 
 ##Generate your own messages(!)
