@@ -813,7 +813,7 @@ To check if this is needed:
 ### More settings
 
 
-##Generate your own messages(!)
+## Generate your own messages(!)
 
 You can send your own text messages to BAZZ for it to readout to the user. To do this:
 
