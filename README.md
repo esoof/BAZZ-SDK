@@ -18,6 +18,7 @@ SDK for 3rd party developers to leverage the features of BAZZ.
     * [Controlling flow](#controlling-flow)
     * [Controlling playback](#controlling-playback)
     * [Internal setting screens](#internal-setting-screens)
+    * [More settings](#more-playback)
   * [Generate your own messages(!)](#generate-your-own-messages)
 
 <!-- toc stop -->
@@ -807,6 +808,10 @@ To check if this is needed:
         boolean bAppEnabledInSystemNotifications = MyApplication.mBazzLib.getIsNotificationAccessEnabled();
     }
 ```
+
+
+###More settings
+
 
 ##Generate your own messages(!)
 
