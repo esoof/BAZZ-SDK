@@ -812,6 +812,32 @@ To check if this is needed:
 
 ### More settings
 
+***Driver name
+
+You can set driver name / phone / gender:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setDriverName("<name>");
+        MyApplication.mBazzLib.setDriverPhone("<phone>");
+        MyApplication.mBazzLib.setDriverGenderIsFemale(true/false);
+    }
+```
+
+You can get the current settings:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        String  name      = MyApplication.mBazzLib.getDriverName();
+        String  phone     = MyApplication.mBazzLib.getDriverPhone();
+        boolean bIsFemale = MyApplication.mBazzLib.getDriverGenderIsFemale();
+    }
+```
+
+
+
 
 ## Generate your own messages(!)
 
