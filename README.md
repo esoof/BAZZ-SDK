@@ -38,8 +38,8 @@ You can import this project to Android Studio, and use it as a reference
 or base to make your alterations.
 
 If you already have an existing project, or want to create a new one,
-The BAZZ SDK comes in the form of **bazz_sdk.aar**. You can find it in
-the '**bazz_sdk**' folder of the demo project, or [download from here](https://dl.dropboxusercontent.com/s/mfbsfzcpqna7796/bazz_sdk.aar).
+The BAZZ SDK comes in the form of **bazz_sdk.aar**. You should receive it from us, along with
+the App ID.
 
 To add it to your project, follow the steps below:
 
