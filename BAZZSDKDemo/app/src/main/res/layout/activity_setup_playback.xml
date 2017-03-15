@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setup_driving"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relBazzModes"
+                android:textColor="#ffffffff"
+                android:textSize="11sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="6dip"
+                android:text="Volume:"
+                />
+
+            <SeekBar
+                android:id="@+id/seekBarVolume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="15"
+                android:progress="3"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relBazzModes"
+                android:textColor="#ffffffff"
+                android:textSize="11sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="6dip"
+                android:text="Headset Volume:"
+                android:layout_marginTop="10dip"
+                />
+
+            <SeekBar
+                android:id="@+id/seekBarHeadsetVolume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="15"
+                android:progress="3"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relBazzModes"
+                android:textColor="#ffffffff"
+                android:textSize="11sp"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="6dip"
+                android:text="Speed:"
+                android:layout_marginTop="10dip"
+                />
+
+            <SeekBar
+                android:id="@+id/seekBarSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="4"
+                android:progress="2"
+                />
+
+            <View
+                android:id="@+id/sep1"
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="#ff7f7f7f"
+                android:layout_below="@+id/lblBazzStateTitle"
+                android:layout_marginTop="10dip"
+                android:layout_marginLeft="6dip"
+                android:layout_marginRight="6dip"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="16dip"
+                android:layout_marginLeft="6dip"
+                android:layout_marginRight="6dip"
+                >
+
+                <Button
+                    android:id="@+id/btnConfigBT"
+                    android:layout_width="0dip"
+                    android:layout_weight="1.0"
+                    android:layout_height="36dip"
+                    android:text="Bluetooth..."
+                    android:background="#ff7f7f7f"
+                    android:paddingLeft="6dip"
+                    android:paddingRight="6dip"
+                    />
+
+                <Button
+                    android:id="@+id/btnConfigTTS"
+                    android:layout_width="0dip"
+                    android:layout_weight="1.0"
+                    android:layout_height="36dip"
+                    android:text="Text-To-Speech..."
+                    android:background="#ff7f7f7f"
+                    android:paddingLeft="6dip"
+                    android:paddingRight="6dip"
+                    android:layout_marginLeft="6dip"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/relBazzModes"
+        >
+
+        <RadioButton
+            android:text="Off"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioButtonOff"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <RadioButton
+            android:text="Always On"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/radioButtonOff"
+            android:layout_marginLeft="10dip"
+            android:layout_toEndOf="@+id/radioButtonOff"
+            android:id="@+id/radioButtonAlways" />
+
+        <RadioButton
+            android:text="While driving"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/radioButtonAlways"
+            android:layout_toEndOf="@+id/radioButtonAlways"
+            android:layout_marginLeft="10dip"
+            android:id="@+id/radioButtonDriving" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnConfigDriving"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@+id/relBazzModes"
+        android:layout_alignBottom="@+id/relBazzModes"
+        android:layout_toRightOf="@+id/relBazzModes"
+        android:layout_marginLeft="10dip"
+        android:background="#ff7f7f7f"
+        android:layout_marginRight="6dip"
+        android:text=">>"
+        />
+
+    <TextView
+        android:id="@+id/lblBazzStateTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="30dip"
+        android:layout_below="@+id/relBazzModes"
+        android:layout_marginTop="10dip"
+        android:layout_marginLeft="6dip"
+        android:textColor="#ffffffff"
+        android:gravity="center_vertical"
+        android:text="BAZZ State:"
+        />
+
+    <TextView
+        android:id="@+id/lblBazzStateValue"
+        android:layout_width="wrap_content"
+        android:layout_height="30dip"
+        android:layout_below="@+id/relBazzModes"
+        android:layout_marginTop="10dip"
+        android:layout_toRightOf="@+id/lblBazzStateTitle"
+        android:layout_marginLeft="6dip"
+        android:textColor="#ffffffff"
+        android:textStyle="bold"
+        android:gravity="center_vertical"
+        android:text="Unknown"
+        />
+
+    <CheckBox
+        android:text="show in notifications"
+        android:layout_width="match_parent"
+        android:layout_height="30dip"
+        android:layout_below="@+id/relBazzModes"
+        android:layout_marginTop="10dip"
+        android:layout_toRightOf="@+id/lblBazzStateValue"
+        android:layout_marginLeft="6dip"
+        android:id="@+id/btnShowInNotificationArea"
+        />
+
+    <View
+        android:id="@+id/sep1"
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="#ff7f7f7f"
+        android:layout_below="@+id/lblBazzStateTitle"
+        android:layout_marginTop="10dip"
+        android:layout_marginLeft="6dip"
+        android:layout_marginRight="6dip"
+        />
+
+    <LinearLayout
+        android:id="@+id/linIncomingMessages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sep1"
+        android:layout_marginTop="10dip"
+        android:layout_marginLeft="6dip"
+        android:layout_marginRight="6dip"
+        android:orientation="vertical"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/btnConfigIncoming"
+                android:layout_width="0dip"
+                android:layout_weight="1.0"
+                android:layout_height="36dip"
+                android:text="Incoming MSGS..."
+                android:background="#ff7f7f7f"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                />
+
+            <Button
+                android:id="@+id/btnConfigVoiceCommands"
+                android:layout_width="0dip"
+                android:layout_weight="1.0"
+                android:layout_height="36dip"
+                android:text="Voice commands..."
+                android:background="#ff7f7f7f"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:layout_marginLeft="6dip"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="6dip"
+            >
+
+            <Button
+                android:id="@+id/btnConfigPlayback"
+                android:layout_width="0dip"
+                android:layout_weight="1.0"
+                android:layout_height="36dip"
+                android:text="Playback..."
+                android:background="#ff7f7f7f"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                />
+
+            <Button
+                android:id="@+id/btnConfigMisc"
+                android:layout_width="0dip"
+                android:layout_weight="1.0"
+                android:layout_height="36dip"
+                android:text="MISC..."
+                android:background="#ff7f7f7f"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:layout_marginLeft="6dip"
+                />
+
+            <Button
+                android:id="@+id/btnSendMessage"
+                android:layout_width="0dip"
+                android:layout_weight="1.0"
+                android:layout_height="36dip"
+                android:text="SEND MSG..."
+                android:background="#ff007f7f"
+                android:paddingLeft="6dip"
+                android:paddingRight="6dip"
+                android:layout_marginLeft="6dip"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linIncomingMessages"
+        android:layout_marginTop="6dip"
+        android:layout_above="@+id/btnClear"
+        android:layout_marginBottom="6dip"
+        android:layout_marginLeft="6dip"
+        android:layout_marginRight="6dip"
+        android:background="#ff7f7f7f"
+        >
+
+        <ListView
+            android:id="@+id/lstLog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dip"
+            android:layout_marginBottom="1dip"
+            android:layout_marginLeft="1dip"
+            android:layout_marginRight="1dip"
+            android:background="#ffdddddd"
+            android:dividerHeight="0dip"
+            android:divider="#00000000"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnClear"
+        android:layout_width="wrap_content"
+        android:layout_height="36dip"
+        android:text="Clear"
+        android:background="#ff7f7f7f"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        />
+
+</RelativeLayout>

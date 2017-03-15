@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setup_driving"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:scrollbars="none"
+        >
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <CheckBox
+                android:id="@+id/btnWorkWithSMSorMMS"
+                android:text="SMS and/or MMS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_marginTop="2dip"
+                android:layout_marginLeft="10dip"
+                />
+
+            <CheckBox
+                android:id="@+id/btnWorkWithWhatsapp"
+                android:text="Whatsapp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_marginLeft="10dip"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="42dip"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dip"
+                    android:layout_below="@+id/relBazzModes"
+                    android:textColor="#ffffffff"
+                    android:textSize="11sp"
+                    android:gravity="center_vertical"
+                    android:text="Whatsapp group messages:"
+                    />
+
+                <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/relBazzModes"
+                    >
+
+                    <RadioButton
+                        android:text="Do not play group messages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radioButtonDoNotPlay"
+                        android:textSize="11sp"
+                        />
+
+                    <RadioButton
+                        android:text="Play only group name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radioButtonOnlyGroupName"
+                        android:textSize="11sp"
+                        />
+
+                    <RadioButton
+                        android:text="Play all group messages"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/radioButtonPlayAll"
+                        android:textSize="11sp"
+                        />
+
+                </RadioGroup>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/relBazzModes"
+                    android:textColor="#ffffffff"
+                    android:textSize="11sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="30dip"
+                    android:text="You can block specific groups.\nA group will appear here after\nthe first time BAZZ reads a message\nfrom the group"
+                    />
+
+                <Button
+                    android:id="@+id/btnConfigWhatsappGroupsBlocking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="26dip"
+                    android:background="#ff7f7f7f"
+                    android:paddingLeft="6dip"
+                    android:paddingRight="6dip"
+                    android:layout_marginTop="6dip"
+                    android:layout_marginLeft="30dip"
+                    android:text="manage blocking..."
+                    />
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/btnWorkWithMessenger"
+                android:text="Facebook Messenger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_marginTop="2dip"
+                android:layout_marginLeft="10dip"
+                />
+
+            <CheckBox
+                android:id="@+id/btnWorkWithLine"
+                android:text="Line"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_marginTop="2dip"
+                android:layout_marginLeft="10dip"
+                />
+
+            <CheckBox
+                android:id="@+id/btnWorkWithGmail"
+                android:text="Gmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_marginTop="2dip"
+                android:layout_marginLeft="10dip"
+                />
+
+            <CheckBox
+                android:id="@+id/btnWorkWithWeChat"
+                android:text="WeChat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_marginTop="2dip"
+                android:layout_marginLeft="10dip"
+                />
+
+            <View
+                android:id="@+id/sep1"
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:background="#ff7f7f7f"
+                android:layout_marginTop="6dip"
+                android:layout_marginLeft="6dip"
+                android:layout_marginRight="6dip"
+                />
+
+            <CheckBox
+                android:id="@+id/btnMuteOthers"
+                android:text="Mute other app notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dip"
+                android:textSize="11sp"
+                android:layout_marginLeft="10dip"
+                />
+
+            <CheckBox
+                android:id="@+id/btnHandleIncomingCalls"
+                android:text="Read caller name on incoming calls"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dip"
+                android:textSize="11sp"
+                android:layout_marginLeft="10dip"
+                />
+
+            <CheckBox
+                android:id="@+id/btnReadUnknown"
+                android:text="Read messages from blocked/unknown senders"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dip"
+                android:textSize="11sp"
+                android:layout_marginLeft="10dip"
+                />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setup_driving"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <CheckBox
+            android:text="Driving"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="10dip"
+            android:id="@+id/btnDriving" />
+
+        <!--
+        <CheckBox
+            android:text="Use GPS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="34dip"
+            android:id="@+id/btnGPS" />
+        -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            >
+
+            <CheckBox
+                android:text="Connected to Bluetooth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnBluetooth" />
+
+            <Button
+                android:id="@+id/btnConfigBluetooth"
+                android:layout_width="80dip"
+                android:layout_height="match_parent"
+                android:layout_alignTop="@+id/btnBluetooth"
+                android:layout_alignBottom="@+id/btnBluetooth"
+                android:layout_alignParentRight="true"
+                android:background="#ff7f7f7f"
+                android:layout_marginRight="6dip"
+                android:text="manage"
+                />
+
+        </RelativeLayout>
+
+        <CheckBox
+            android:text="Connected to wired headset"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="10dip"
+            android:id="@+id/btnWiredHeadset" />
+
+        <CheckBox
+            android:text="Connected to charger"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="10dip"
+            android:id="@+id/btnCharger" />
+
+    </LinearLayout>
+
+</RelativeLayout>

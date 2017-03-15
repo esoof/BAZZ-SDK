@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setup_driving"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:textColor="#ffffffff"
+            android:textSize="11sp"
+            android:gravity="center_vertical"
+            android:text="Playing message content"
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RadioButton
+                android:text="Play sender name, then wait for voice command"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonAfterSenderWaitCommand"
+                android:textSize="11sp"
+                />
+
+            <RadioButton
+                android:text="Play sender name, and automatically play content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonAfterSenderPlayContent"
+                android:textSize="11sp"
+                />
+
+            <RadioButton
+                android:text="Play sender name, then stop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonAfterSenderStop"
+                android:textSize="11sp"
+                />
+
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#ff7f7f7f"
+            android:layout_marginTop="6dip"
+            android:layout_marginLeft="6dip"
+            android:layout_marginRight="6dip"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:textColor="#ffffffff"
+            android:textSize="11sp"
+            android:gravity="center_vertical"
+            android:text="After playing message content"
+            android:layout_marginTop="6dip"
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RadioButton
+                android:text="Wait for voice commands for reply"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonAfterContentWaitCommand"
+                android:textSize="11sp"
+                />
+
+            <RadioButton
+                android:text="Reply with text message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonAfterContentSendText"
+                android:textSize="11sp"
+                />
+
+            <RadioButton
+                android:text="Do nothing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonAfterContentDoNothing"
+                android:textSize="11sp"
+                />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</RelativeLayout>

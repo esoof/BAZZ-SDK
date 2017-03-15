@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_setup_driving"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:textColor="#ffffffff"
+            android:textSize="11sp"
+            android:gravity="center_vertical"
+            android:text="Text for SMS reply:"
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RadioButton
+                android:text="Send default message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonUseDefaultText"
+                android:textSize="11sp"
+                />
+
+            <RadioButton
+                android:text="Send custom message (Hi there, this is a BAZZ demo)"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonUseCustomText"
+                android:textSize="11sp"
+                />
+
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#ff7f7f7f"
+            android:layout_marginTop="10dip"
+            android:layout_marginLeft="6dip"
+            android:layout_marginRight="6dip"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:textColor="#ffffffff"
+            android:textSize="11sp"
+            android:gravity="center_vertical"
+            android:text="Popup on screen for incoming messages:"
+            android:layout_marginTop="10dip"
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RadioButton
+                android:text="Full screen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonFullScreen"
+                android:textSize="11sp"
+                />
+
+            <RadioButton
+                android:text="A small floating bubble"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonFloatingBubble"
+                android:textSize="11sp"
+                />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+</RelativeLayout>
