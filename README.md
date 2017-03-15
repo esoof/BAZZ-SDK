@@ -224,7 +224,7 @@ the operation of BAZZ...)
         if (mBazzLib!=null)
         {
             // APP_ID is a string you will receive from us when we register your app
-            mBazzLib.init(this,getPackageName(),APP_ID);
+            mBazzLib.init(this,APP_ID);
             
             // You must call these functions, too to initialize the app properly
             mBazzLib.setAppName("<Your app user-friendly name>");
@@ -249,7 +249,6 @@ the operation of BAZZ...)
         }
 ```
 
-
 - In the '**onTerminate**' function, add the following lines:
 
 ```java
@@ -259,6 +258,22 @@ the operation of BAZZ...)
             mBazzLib = null;
         }
 ```
+
+- **Important:** if you need your app to work with your own server - set the server URL by calling the following function **before** you call 'mBazzLib.init...':
+
+```java
+        mBazzLib = new BazzLib();
+
+        if (mBazzLib!=null)
+        {
+            // Set a custom server URL:
+            mBazzLib.setServerURL("<your server URL>");
+        
+            // APP_ID is a string you will receive from us when we register your app
+            mBazzLib.init(this,APP_ID);
+            ...
+```            
+
 
 
 
