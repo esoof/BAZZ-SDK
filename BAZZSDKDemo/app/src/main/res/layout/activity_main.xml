@@ -230,4 +230,16 @@
         android:layout_centerHorizontal="true"
         />
 
+    <TextView
+        android:id="@+id/lblVersion"
+        android:layout_width="wrap_content"
+        android:layout_height="36dip"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="6dip"
+        android:textColor="#ffffffff"
+        android:gravity="center_vertical"
+        android:text="1.0.X"
+        />
+
 </RelativeLayout>

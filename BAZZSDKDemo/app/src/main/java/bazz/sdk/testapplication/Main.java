@@ -165,6 +165,8 @@ public class Main extends Activity {
             });
         }
 
+        ((TextView)findViewById(R.id.lblVersion)).setText(BazzLib.SDK_VERSION);
+
         //------------------------------------------------------------
         //--- Callbacks from BAZZ SDK:                             ---
         //------------------------------------------------------------

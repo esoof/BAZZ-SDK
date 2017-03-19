@@ -105,6 +105,57 @@
 
         </RadioGroup>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#ff7f7f7f"
+            android:layout_marginTop="6dip"
+            android:layout_marginLeft="6dip"
+            android:layout_marginRight="6dip"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dip"
+            android:textColor="#ffffffff"
+            android:textSize="11sp"
+            android:gravity="center_vertical"
+            android:text="Voice prompts length"
+            android:layout_marginTop="6dip"
+            />
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RadioButton
+                android:text="Long"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonVoicePromptsLong"
+                android:textSize="11sp"
+                />
+
+            <RadioButton
+                android:text="Medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonVoicePromptsMedium"
+                android:textSize="11sp"
+                />
+
+            <RadioButton
+                android:text="Short"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonVoicePromptsShort"
+                android:textSize="11sp"
+                />
+
+        </RadioGroup>
+
     </LinearLayout>
 
 </RelativeLayout>

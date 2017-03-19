@@ -44,6 +44,19 @@ public class SetupVoiceCommands extends Activity {
 
             btn    = (RadioButton)findViewById(R.id.radioButtonAfterContentDoNothing);
             btn.setChecked(nState== BazzLib.VOICE_COMMANDS_AFTER_CONTENT_DO_NOTHING);
+
+            //----------------------
+
+            nState = MyApplication.mBazzLib.getVoicePromptsLength();
+
+            btn    = (RadioButton)findViewById(R.id.radioButtonVoicePromptsLong);
+            btn.setChecked(nState== BazzLib.VOICE_PROMPTS_LONG);
+
+            btn    = (RadioButton)findViewById(R.id.radioButtonVoicePromptsMedium);
+            btn.setChecked(nState== BazzLib.VOICE_PROMPTS_MEDIUM);
+
+            btn    = (RadioButton)findViewById(R.id.radioButtonVoicePromptsShort);
+            btn.setChecked(nState== BazzLib.VOICE_PROMPTS_SHORT);
         }
     }
 
@@ -129,6 +142,44 @@ public class SetupVoiceCommands extends Activity {
                 if (MyApplication.mBazzLib!=null)
                 {
                     MyApplication.mBazzLib.setVoiceCommandsAfterContentDoWhat(BazzLib.VOICE_COMMANDS_AFTER_CONTENT_DO_NOTHING);
+                    UpdateDisplay();
+                }
+            }
+        });
+
+        //--------------------------------------------------------------
+
+        rb = (RadioButton)findViewById(R.id.radioButtonVoicePromptsLong);
+        rb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
+                if (MyApplication.mBazzLib!=null)
+                {
+                    MyApplication.mBazzLib.setVoicePromptsLength(BazzLib.VOICE_PROMPTS_LONG);
+                    UpdateDisplay();
+                }
+            }
+        });
+
+        rb = (RadioButton)findViewById(R.id.radioButtonVoicePromptsMedium);
+        rb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
+                if (MyApplication.mBazzLib!=null)
+                {
+                    MyApplication.mBazzLib.setVoicePromptsLength(BazzLib.VOICE_PROMPTS_MEDIUM);
+                    UpdateDisplay();
+                }
+            }
+        });
+
+        rb = (RadioButton)findViewById(R.id.radioButtonVoicePromptsShort);
+        rb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
+                if (MyApplication.mBazzLib!=null)
+                {
+                    MyApplication.mBazzLib.setVoicePromptsLength(BazzLib.VOICE_PROMPTS_SHORT);
                     UpdateDisplay();
                 }
             }
