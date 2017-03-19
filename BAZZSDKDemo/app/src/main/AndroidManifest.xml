@@ -65,12 +65,12 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
+        android:supportsRtl="false"
         android:theme="@style/AppTheme"
         android:name=".MyApplication"
         >
 
-        <activity android:name=".Main">
+        <activity android:name=".Main" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -78,31 +78,31 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SetupDriving">
+        <activity android:name=".SetupDriving" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".SetupIncoming">
+        <activity android:name=".SetupIncoming" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".SetupVoiceCommands">
+        <activity android:name=".SetupVoiceCommands" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".SetupPlayback">
+        <activity android:name=".SetupPlayback" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".SetupMisc">
+        <activity android:name=".SetupMisc" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
