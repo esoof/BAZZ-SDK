@@ -15,11 +15,16 @@ SDK for 3rd party developers to leverage the features of BAZZ.
   * [Driving detection](#driving-detection)
   * [Incoming messages](#incoming-messages)
   * [Configuring operation](#configuring-operation)
+    * [Messages queue](#messages-queue)
     * [Controlling flow](#controlling-flow)
     * [Controlling playback](#controlling-playback)
     * [Internal setting screens](#internal-setting-screens)
     * [More settings](#more-playback)
   * [Generate your own messages(!)](#generate-your-own-messages)
+  * [Handle user interaction yourself](#handle-interaction-yourself)
+    * [Play prompts using TTS](#play-using-tts)
+    * [Play prompts from resources](#play-from-resources)
+    * [Ask for user commands](#ask-user-commands)
 
 <!-- toc stop -->
 
@@ -527,6 +532,57 @@ The parametrs here are:
 
 ## Configuring operation
 
+### Messages queue
+
+When BAZZ detects an incoming message, it adds it to a queue. During normal operation, messages are pulled from this queue, and treated (or sent to your app for treatment) on a FIFO order.
+
+On some conditions (such as when user is on a phone call, or the phone is MUTE), BAZZ pauses polling the queue for messages, to not disturb the user.
+
+If you need to, you can force BAZZ to pause treatment of messages from the queue if you need to (new messages will still be added to the queue).
+
+To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.pauseQueueTreatment();
+        // - or -
+        MyApplication.mBazzLib.resumeQueueTreatment();
+    }
+```
+
+You can get the current state:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        boolean queueTreatmentIsPaused = MyApplication.mBazzLib.isQueueTreatmentPaused();
+    }
+```
+
+Question - what if your app calls these pause/resume methods in high frequency, thus creates an erratic behaviour to the user? You can define a timeout filter for the resume method. I.E. if you called 'pause', then calls to 'resume' will only take affect X seconds after the last 'pause'.
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setPauseQueueTimeout(int timeoutInSecs);
+    }
+```
+
+
+There may be a scenario where such a condition arises when BAZZ is already treating a message or even just playing a message to the user, and your app will want to force BAZZ to stop distracting the user at once.
+
+To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.stopUserInteractionAtOnce();
+    }
+```
+
+
+
 ### Controlling flow
 
 Normally, when BAZZ gets an incoming message, it treats it like this:
@@ -894,5 +950,21 @@ In the callback you will get:
 - **requestResult:** the command the user selected
 
 **Note:** return false to allow BAZZ to continue treating the user selected reply (e.g. send a text message, call the phone number you supplied, etc.), or true if you want to handle the user reply command yourself.
+
+## Handle user interaction yourself
+
+### Play prompts using TTS
+
+When BAZZ detects an incoming message, it adds it to a queue. During normal operation, messages are pulled from this queue, and treated (or sent to your app for treatment) on a FIFO order.
+
+### Play prompts from resources
+
+When BAZZ detects an incoming message, it adds it to a queue. During normal operation, messages are pulled from this queue, and treated (or sent to your app for treatment) on a FIFO order.
+
+### Ask for user commands
+
+When BAZZ detects an incoming message, it adds it to a queue. During normal operation, messages are pulled from this queue, and treated (or sent to your app for treatment) on a FIFO order.
+
+
 
 #Thank you for using BAZZ !
