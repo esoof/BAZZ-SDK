@@ -1172,4 +1172,4 @@ types of analytic events:
 
 
 
-#Thank you for using BAZZ !
+# Thank you for using BAZZ !
