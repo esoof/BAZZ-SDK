@@ -25,6 +25,9 @@ SDK for 3rd party developers to leverage the features of BAZZ.
     * [Play prompts using TTS](#play-prompts-using-tts)
     * [Play prompts from resources](#play-prompts-from-resources)
     * [Ask for user commands](#ask-for-user-commands)
+  * [User analytics](#user-analytics)
+    * [New user registration](#new-user-registration)
+    * [Event callback](#event-callback)
 
 <!-- toc stop -->
 
@@ -1070,6 +1073,102 @@ In the callback you will get:
 - **requestText:** the command detected
 - **requestResult:** the command the user selected
 
+
+
+  * [User analytics](#user-analytics)
+    * [New user registration](#new-user-registration)
+    * [Event callback](#event-callback)
+
+
+## User analytics
+
+On some licenses, you can get access to analytics events, so that you can store on your server events and/or info related to user behaviour, etc.
+
+### New user registration
+
+You get details of a new user:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnNewUserDetails(new BazzLib.NewUserDetailsListener() {
+            @Override
+            public void onNewUserDetails(	String driverKey, 				// a unique id for the driver
+            								String deviceModel, 			// device model
+            								String deviceFirmwareVersion,	// device firmware version
+            								String deviceCarrier, 			// carrier
+            								String deviceCountry, 			// country
+            								String deviceLocale 			// locale
+            								)
+            {
+                //... you can save this info to your server.
+            }
+        });
+    }
+```
+
+### Event callback
+
+You get details events happening on the device:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnAnalyticsEvent(new BazzLib.AnalyticsEventListener() {
+            @Override
+            public void onAnalyticsEvent(sLogEvent eventInfo)
+            {
+                //... you can save this info to your server. see below description of eventInfo object
+            }
+        });
+    }
+```
+
+The event info object:
+
+```java
+public class sLogEvent {
+
+    String sDriverKey;		// id of the driver
+    
+    String sDriveId;		// id of current trip (assigned whenever BAZZ detects a new drive trip,
+    						// and attached to events related to the current trip)
+    						
+    String sTimestamp;		// timestamp of the event
+    String sActivityType;	// type of event - see below
+    String sMessageId;		// if event is related to an incoming message - unique id of the message
+    String sMessageType;	// type of message (SMS, WhatsApp,...)
+    String sListenType;		// if BAZZ handles the messages - what user selected in the first vocal menu (stop/continue)
+    String sResponseType;	// if BAZZ handles the messages - what user selected in the second vocal menu (text/callback/record/stop)
+}
+```
+
+types of analytic events:
+
+```java
+    public static final String KEY_ACTIVITY_TYPE_START_DRIVE = "StartDrive";
+    public static final String KEY_ACTIVITY_TYPE_END_DRIVE   = "EndDrive";
+
+    public static final String KEY_ACTIVITY_TYPE_ALWAYS_ON        = "Always";
+    public static final String KEY_ACTIVITY_TYPE_WHILE_DRIVING    = "Driving";
+    public static final String KEY_ACTIVITY_TYPE_OFF              = "Off";
+
+    public static final String KEY_ACTIVITY_TYPE_INCOMING_MESSAGE = "Receive";
+    public static final String KEY_ACTIVITY_TYPE_FIRST_MENU       = "Listen";
+    public static final String KEY_ACTIVITY_TYPE_RESPONSES        = "Response";
+
+    public static final String KEY_FIRST_MENU_TYPE_STOP           = "Skip";
+    public static final String KEY_FIRST_MENU_TYPE_CONTINUE       = "Listen";
+    public static final String KEY_FIRST_MENU_TYPE_TOUCH          = "Touch";
+
+    public static final String KEY_SECOND_MENU_TYPE_SMS           = "SMS";
+    public static final String KEY_SECOND_MENU_TYPE_CALLBACK      = "Callback";
+    public static final String KEY_SECOND_MENU_TYPE_RECORD        = "Record";
+    public static final String KEY_SECOND_MENU_TYPE_REPEAT        = "Repeat";
+    public static final String KEY_SECOND_MENU_TYPE_STOP          = "Stop";
+    public static final String KEY_SECOND_MENU_TYPE_TOUCH         = "Touch";
+    public static final String KEY_SECOND_MENU_TYPE_STOP_WHILE_LISTEN = "Stop While Listen";
+```
 
 
 
