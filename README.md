@@ -955,15 +955,121 @@ In the callback you will get:
 
 ### Play prompts using TTS
 
-When BAZZ detects an incoming message, it adds it to a queue. During normal operation, messages are pulled from this queue, and treated (or sent to your app for treatment) on a FIFO order.
+You can play your own text prompts using TTS. To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        String requestId = MyApplication.mBazzLib.requestPlayText(text);
+    }
+```
+
+Parameters are:
+
+- **text:** the actual text to play to the user
+
+Return value:
+
+is a String holding the ID of the request - you can use it to get the response from:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
+            @Override
+            public boolean onRequestResult(String requestId, String requestText, String requestResult)
+            {
+                HandleCallbackFromLib("Message reply was "+requestResult);
+                return false;
+            }
+        });
+    }
+```
+
+In the callback you will get:
+
+- **requestId:** the id of the message you asked to send
+- **requestText:** the original text of the message you sent
+- **requestResult:** the command the user selected
 
 ### Play prompts from resources
 
-When BAZZ detects an incoming message, it adds it to a queue. During normal operation, messages are pulled from this queue, and treated (or sent to your app for treatment) on a FIFO order.
+You can play a MP3 file from the 'raw' folder in your app 'res'. To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        String requestId = MyApplication.mBazzLib.requestPlayResource(resID);
+    }
+```
+
+Parameters are:
+
+- **resID:** the resource id of the MP3 file (e.g. R.raw.shoutout)
+
+Return value:
+
+is a String holding the ID of the request - you can use it to get the response from:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
+            @Override
+            public boolean onRequestResult(String requestId, String requestText, String requestResult)
+            {
+                HandleCallbackFromLib("Message reply was "+requestResult);
+                return false;
+            }
+        });
+    }
+```
+
+In the callback you will get:
+
+- **requestId:** the id of the message you asked to send
+- **requestText:** a string with the numeric value of the resID
+- **requestResult:** the command the user selected
 
 ### Ask for user commands
 
-When BAZZ detects an incoming message, it adds it to a queue. During normal operation, messages are pulled from this queue, and treated (or sent to your app for treatment) on a FIFO order.
+You can ask BAZZ to record and analyze a vocal command form the user. To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        String requestId = MyApplication.mBazzLib.requestVoiceMenu(ArrayList<String> commands);
+    }
+```
+
+Parameters are:
+
+- **commands:** an ArrayList of the commands as strings (e.g. {"stop","continue"})
+
+Return value:
+
+is a String holding the ID of the request - you can use it to get the response from:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
+            @Override
+            public boolean onRequestResult(String requestId, String requestText, String requestResult)
+            {
+                HandleCallbackFromLib("Message reply was "+requestResult);
+                return false;
+            }
+        });
+    }
+```
+
+In the callback you will get:
+
+- **requestId:** the id of the message you asked to send
+- **requestText:** the command detected
+- **requestResult:** the command the user selected
+
 
 
 
