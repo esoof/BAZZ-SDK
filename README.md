@@ -21,10 +21,10 @@ SDK for 3rd party developers to leverage the features of BAZZ.
     * [Internal setting screens](#internal-setting-screens)
     * [More settings](#more-playback)
   * [Generate your own messages(!)](#generate-your-own-messages)
-  * [Handle user interaction yourself](#handle-interaction-yourself)
-    * [Play prompts using TTS](#play-using-tts)
-    * [Play prompts from resources](#play-from-resources)
-    * [Ask for user commands](#ask-user-commands)
+  * [Handle user interaction yourself](#handle-user-interaction-yourself)
+    * [Play prompts using TTS](#play-prompts-using-tts)
+    * [Play prompts from resources](#play-prompts-from-resources)
+    * [Ask for user commands](#ask-for-user-commands)
 
 <!-- toc stop -->
 
