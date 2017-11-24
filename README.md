@@ -22,6 +22,7 @@ SDK for 3rd party developers to leverage the features of BAZZ.
     * [More settings](#more-playback)
   * [Generate your own messages(!)](#generate-your-own-messages)
   * [Handle user interaction yourself](#handle-user-interaction-yourself)
+    * [Take over treatment of messages](#take-over-treatment-of-messages)
     * [Play prompts using TTS](#play-prompts-using-tts)
     * [Play prompts from resources](#play-prompts-from-resources)
     * [Ask for user commands](#ask-for-user-commands)
@@ -965,6 +966,29 @@ In the callback you will get:
 **Note:** return false to allow BAZZ to continue treating the user selected reply (e.g. send a text message, call the phone number you supplied, etc.), or true if you want to handle the user reply command yourself.
 
 ## Handle user interaction yourself
+
+
+### Take over treatment of messages
+
+To be notified of incoming messages in your app, use:
+
+```java
+    MyApplication.mBazzLib.setOnIncomingMessagesListener(new BazzLib.BazzIncomingMessagesListener() {
+        @Override
+        public boolean onIncomingMessagesListener(String type,
+                                                  String phone,
+                                                  String name,
+                                                  String text)
+        {
+            // handle the messages here...
+        
+            return false;
+        }
+    });
+```
+
+
+
 
 ### Play prompts using TTS
 
