@@ -970,24 +970,53 @@ In the callback you will get:
 
 ### Take over treatment of messages
 
-To be notified of incoming messages in your app, use:
+When BAZZ pulls a message from the queue for the user, it first calls the following callback. You can use it to take control of the message, and handle it yourself in your app (in stead of letting the SDK handle it):
 
 ```java
-    MyApplication.mBazzLib.setOnIncomingMessagesListener(new BazzLib.BazzIncomingMessagesListener() {
+    MyApplication.mBazzLib.setOnNewMessageFromQueueListener(new BazzLib.BazzNewMessageFromQueueListener() {
         @Override
-        public boolean onIncomingMessagesListener(String type,
+        public int  onNewMessageFromQueueListener(String type,
                                                   String phone,
                                                   String name,
-                                                  String text)
+                                                  String text,
+                                                  String audioPartId,
+                                                  long   msgId)
         {
             // handle the messages here...
         
-            return false;
+        	// this stops treatment of message, and erases it from the queue (ignore message)
+            return BazzLib.NEW_MESSAGE_FROM_QUEUE_RESULT_DONT_HANDLE_AND_ERASE;
+            
+            - or - 
+        
+        	// this stops treatment of message, but keeps it in the queue. It will be treated again after a timeout
+            return BazzLib.NEW_MESSAGE_FROM_QUEUE_RESULT_DONT_HANDLE_AND_KEEP;
+            
+            - or - 
+        
+        	// instructs BAZZ SDK to handle this message (show UI, play sender name, ask for commands etc.) (default value)
+            return BazzLib.NEW_MESSAGE_FROM_QUEUE_RESULT_HANDLED_IN_SDK;
+            
+            - or - 
+        
+        	// tells BAZZ SDK to pause treatments, and lets your app handle the message.
+        	// *** When app is done - be sure to call 'endMessageTreatment' !!! ***
+            return BazzLib.NEW_MESSAGE_FROM_QUEUE_RESULT_HANDLED_IN_APP;
         }
     });
 ```
 
+If you selected to return NEW_MESSAGE_FROM_QUEUE_RESULT_HANDLED_IN_APP, you can use the following methods to play the sender name, content, and ask the user for voice commands.
 
+**Important!** do NOT forget to call the following function at end of message treatment - so that BAZZ SDK will remove it from the queue, and continue to the next message.
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+    	// set the paramater here to true if you want to remove the message from the queue.
+        MyApplication.mBazzLib.endMessageTreatment(true/false);
+    }
+```
 
 
 ### Play prompts using TTS
