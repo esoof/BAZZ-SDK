@@ -115,7 +115,9 @@ public class MyApplication extends Application {
 
 - In your app **build.gradle**, make sure you have **minSdkVersion 16** and **targetSdkVersion 19**.
 
-- Also under **dependencies** add ``` compile 'com.google.android.gms:play-services:7.8.0' ```
+- Under **dependencies** add ``` compile 'com.google.android.gms:play-services:7.8.0' ```
+
+- Under **dependencies** add ``` compile 'com.android.volley:volley:1.0.0' ```
 
 
 ### Manifest
