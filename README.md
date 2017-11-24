@@ -594,12 +594,20 @@ Normally, when BAZZ gets an incoming message, it treats it like this:
 
 First it pops up a screen as an indication to the driver (and to allow the driver to stop message handling at all time by a touch anywhere (note - this is a "panic button", user does **NOT** have to touch the screen to do this, he/she can command BAZZ to stop using voice commands, too).
 
-If the drivier is using a navigation app, then the popup will not be a full-screen, but rather a floating bubble to allow the driver to still see and use the map. You can configure BAZZ to **always** use this floating bubble:
+This full screen popup will obscure all screen, hence interfere with the driver using the phone for navigation or such.
+
+So BAZZ also can display only a small floating bubble to allow the driver to still see and use the map.
+
+You can configure BAZZ to **never** or **always** use this floating bubble, or use it only when navigating:
 
 ```java
-        MyApplication.mBazzLib.setUseFloatingBubble(true/false);
+        MyApplication.mBazzLib.setUseFloatingBubble(BazzLib.FLOATING_BUBBLE_NEVER);
+
+        MyApplication.mBazzLib.setUseFloatingBubble(BazzLib.FLOATING_BUBBLE_ALWAYS);
+
+        MyApplication.mBazzLib.setUseFloatingBubble(BazzLib.FLOATING_BUBBLE_IF_NAVIGATING);
         
-        bOn = MyApplication.mBazzLib.getUseFloatingBubble();
+        nSel = MyApplication.mBazzLib.getUseFloatingBubble();
 ```
 
 Then BAZZ plays a voice prompt "new message from..." and the sender name or phone. Next step can be configured by your app:
