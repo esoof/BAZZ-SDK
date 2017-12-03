@@ -982,13 +982,14 @@ You can play your own text prompts using TTS. To do this:
 ```java
     if (MyApplication.mBazzLib != null)
     {
-        String requestId = MyApplication.mBazzLib.requestPlayText(text);
+        String requestId = MyApplication.mBazzLib.requestPlayText(text,descriptor);
     }
 ```
 
 Parameters are:
 
 - **text:** the actual text to play to the user
+- **descriptor:** a string to represent the 'meaning' of this text (you can use it in your app when you get the callback of playback finished to identify it)
 
 Return value:
 
@@ -1011,8 +1012,8 @@ is a String holding the ID of the request - you can use it to get the response f
 In the callback you will get:
 
 - **requestId:** the id of the message you asked to send
-- **requestDescriptor:** the original text of the message you sent
-- **requestResult:** the command the user selected
+- **requestDescriptor:** the descriptor you sent for this text
+- **requestResult:** "ok" or error text
 
 ### Play prompts from resources
 
@@ -1021,13 +1022,14 @@ You can play a MP3 file from the 'raw' folder in your app 'res'. To do this:
 ```java
     if (MyApplication.mBazzLib != null)
     {
-        String requestId = MyApplication.mBazzLib.requestPlayResource(resID);
+        String requestId = MyApplication.mBazzLib.requestPlayResource(resID, descriptor);
     }
 ```
 
 Parameters are:
 
 - **resID:** the resource id of the MP3 file (e.g. R.raw.shoutout)
+- **descriptor:** a string to represent the 'meaning' of this voice prompt (you can use it in your app when you get the callback of playback finished to identify it)
 
 Return value:
 
@@ -1050,8 +1052,8 @@ is a String holding the ID of the request - you can use it to get the response f
 In the callback you will get:
 
 - **requestId:** the id of the message you asked to send
-- **requestDescriptor:** a string with the numeric value of the resID
-- **requestResult:** the command the user selected
+- **requestDescriptor:** the descriptor you sent for this text
+- **requestResult:** "ok" or error text
 
 ### Ask for user commands
 
@@ -1060,13 +1062,16 @@ You can ask BAZZ to record and analyze a vocal command form the user. To do this
 ```java
     if (MyApplication.mBazzLib != null)
     {
-        String requestId = MyApplication.mBazzLib.requestVoiceMenu(ArrayList<String> commands);
+        String requestId = MyApplication.mBazzLib.requestVoiceMenu(ArrayList<String> commands, String title, String subTitle, String descriptor);
     }
 ```
 
 Parameters are:
 
 - **commands:** an ArrayList of the commands as strings (e.g. {"stop","continue"})
+- **title:** text to be displayed at the top of the popup "Mic" showing when waiting for user voice command
+- **subTitle:** text to be displayed at the bottom of the popup "Mic" showing when waiting for user voice command
+- **descriptor:** a string to represent the 'meaning' of this voice menu (you can use it in your app when you get the callback of playback finished to identify it)
 
 Return value:
 
@@ -1089,7 +1094,7 @@ is a String holding the ID of the request - you can use it to get the response f
 In the callback you will get:
 
 - **requestId:** the id of the message you asked to send
-- **requestDescriptor:** the command detected
+- **requestDescriptor:** the descriptor you sent for this text
 - **requestResult:** the command the user selected
 
 
