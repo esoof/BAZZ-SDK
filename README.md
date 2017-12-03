@@ -1062,13 +1062,16 @@ You can ask BAZZ to record and analyze a vocal command form the user. To do this
 ```java
     if (MyApplication.mBazzLib != null)
     {
-        String requestId = MyApplication.mBazzLib.requestVoiceMenu(ArrayList<String> commands, String title, String subTitle, String descriptor);
+        String requestId = MyApplication.mBazzLib.requestStopContinueVoiceMenu(String title, String subTitle, String descriptor);
+        
+        // --- Or ---
+        
+        String requestId = MyApplication.mBazzLib.requestTextCallbackRecordStopVoiceMenu(String title, String subTitle, String descriptor);
     }
 ```
 
 Parameters are:
 
-- **commands:** an ArrayList of the commands as strings (e.g. {"stop","continue"})
 - **title:** text to be displayed at the top of the popup "Mic" showing when waiting for user voice command
 - **subTitle:** text to be displayed at the bottom of the popup "Mic" showing when waiting for user voice command
 - **descriptor:** a string to represent the 'meaning' of this voice menu (you can use it in your app when you get the callback of playback finished to identify it)
