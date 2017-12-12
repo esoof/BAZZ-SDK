@@ -1002,6 +1002,15 @@ In order for the SDK to be ready for your handling of the message, you need to f
 
 ```
 
+The 'requestPrepareForMessageTreatment' accepts 1 parameter:
+
+- **requestDescriptor:** this freeform string is used to describe the request, and is returned with the request result, so you can identify the request and the current stage it was requested, to build the 'state machine' of your message treatment (see in the demo app).
+
+Return value:
+
+- **requestId:** the id of the request you asked to send
+
+
 
 
 The 'requestPrepareForMessageTreatment' method, as well as the other methods starting with 'request...' are async methods - they are queued inside the SDK, and treated asynchronically. When the SDK finished handling a request, or when it detects an error, it will return the result to the app using a new callback:
@@ -1011,9 +1020,8 @@ The 'requestPrepareForMessageTreatment' method, as well as the other methods sta
     {
         MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
             @Override
-            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult)
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
             {
-                HandleCallbackFromLib("Message reply was "+requestResult);
                 return false;
             }
         });
@@ -1024,7 +1032,8 @@ In the callback you will get:
 
 - **requestId:** the id of the message you asked to send
 - **requestDescriptor:** the descriptor you sent for this text
-- **requestResult:** "ok" or error text
+- **requestResult:** "ok" any other result - depending on the request
+- **requestError:** null if all ok, or an error message if an error occured
 
 
 
