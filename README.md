@@ -22,6 +22,7 @@ SDK for 3rd party developers to leverage the features of BAZZ.
     * [More settings](#more-playback)
   * [Handle user interaction yourself](#handle-user-interaction-yourself)
     * [Take over treatment of messages](#take-over-treatment-of-messages)
+    * [Message life cycle](#message-life-cycle)
     * [Play prompts using TTS](#play-prompts-using-tts)
     * [Play prompts from resources](#play-prompts-from-resources)
     * [Ask for user commands](#ask-for-user-commands)
@@ -956,13 +957,78 @@ When BAZZ pulls a message from the queue for the user, it first calls the follow
             - or - 
         
         	// tells BAZZ SDK to pause treatments, and lets your app handle the message.
+        	// *** Call 'requestPrepareForMessageTreatment' to prepare for message treatment ***
         	// *** When app is done - be sure to call 'endMessageTreatment' !!! ***
             return BazzLib.NEW_MESSAGE_FROM_QUEUE_RESULT_HANDLED_IN_APP;
         }
     });
 ```
 
-If you selected to return NEW_MESSAGE_FROM_QUEUE_RESULT_HANDLED_IN_APP, you can use the following methods to play the sender name, content, and ask the user for voice commands.
+### Message life cycle
+
+If you selected to return NEW_MESSAGE_FROM_QUEUE_RESULT_HANDLED_IN_APP, you have control over how a message is handled. You can use the methods to play the sender name, content, and ask the user for voice commands (see in the next section).
+
+In order for the SDK to be ready for your handling of the message, you need to first call a method to prepare the system for your actions (e.g. connect to car bluetooth, take audio focuds, etc.):
+
+```java
+    MyApplication.mBazzLib.setOnNewMessageFromQueueListener(new BazzLib.BazzNewMessageFromQueueListener() {
+        @Override
+        public int  onNewMessageFromQueueListener(String type,
+                                                  String phone,
+                                                  String name,
+                                                  String text,
+                                                  String audioPartId,
+                                                  long   msgId)
+        {
+		    if (MyApplication.mBazzLib != null)
+    		{
+    			// first save all the message parameters in your app for future use:
+    			msgType        = type;
+		        msgName        = name;
+        		msgPhone       = phone;
+		        msgText        = text;
+        		msgAudioPartId = audioPartId;
+    		
+	        	// Now call 'requestPrepareForMessageTreatment' to prepare for message treatment ***
+        		MyApplication.mBazzLib.requestPrepareForMessageTreatment("PrepareForMessageTreatment");
+    		}
+        
+        	// tells BAZZ SDK to pause treatments, and lets your app handle the message.
+        	// *** When app is done - be sure to call 'endMessageTreatment' !!! ***
+            return BazzLib.NEW_MESSAGE_FROM_QUEUE_RESULT_HANDLED_IN_APP;
+        }
+    });
+
+
+```
+
+
+
+The 'requestPrepareForMessageTreatment' method, as well as the other methods starting with 'request...' are async methods - they are queued inside the SDK, and treated asynchronically. When the SDK finished handling a request, or when it detects an error, it will return the result to the app using a new callback:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
+            @Override
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult)
+            {
+                HandleCallbackFromLib("Message reply was "+requestResult);
+                return false;
+            }
+        });
+    }
+```
+
+In the callback you will get:
+
+- **requestId:** the id of the message you asked to send
+- **requestDescriptor:** the descriptor you sent for this text
+- **requestResult:** "ok" or error text
+
+
+
+
 
 **Important!** do NOT forget to call the following function at end of message treatment - so that BAZZ SDK will remove it from the queue, and continue to the next message.
 
