@@ -980,7 +980,7 @@ In order for the SDK to be ready for your handling of the message, you need to f
                                                   String audioPartId,
                                                   long   msgId)
         {
-		    if (MyApplication.mBazzLib != null)
+		if (MyApplication.mBazzLib != null)
     		{
     			// first save all the message parameters in your app for future use:
     			msgType        = type;
@@ -1024,15 +1024,13 @@ The 'requestPrepareForMessageTreatment' method, as well as the other methods sta
             {
             	if (requestError!=null)
             	{
-            		// an error occured - handle it, but do not forget to call 'endMessageTreatment' if you want to terminate the message treatment
-            		
+            		// an error occured - handle it, but do not forget to call 'endMessageTreatment' if you want to terminate the message treatment       		
             		// ...
             		
-        			MyApplication.mBazzLib.endMessageTreatment(true/false);
+        		MyApplication.mBazzLib.endMessageTreatment(true/false);
             	} else {
             	
-            		// request succeeded. continue with 'state machine' according to 'resultDescriptor' (see demo app for an example)
-            		
+            		// request succeeded. continue with 'state machine' according to 'resultDescriptor' (see demo app for an example)	
             		// ...
             	}
             
