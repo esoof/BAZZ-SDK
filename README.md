@@ -27,6 +27,10 @@ SDK for 3rd party developers to leverage the features of BAZZ.
     * [Play prompts from resources](#play-prompts-from-resources)
     * [Play prompts from SD](#play-prompts-from-sd)
     * [Ask for user commands](#ask-for-user-commands)
+    * [Reply to sender with SMS](#reply-to-sender-with-sms)
+    * [Callback to sender](#callback-to-sender)
+    * [Record a voice reply](#record-a-voice-reply)
+    * [Upload voice reply to server](#upload-voice-reply-to-server)
   * [User analytics](#user-analytics)
     * [New user registration](#new-user-registration)
     * [Event callback](#event-callback)
@@ -1235,8 +1239,203 @@ In the callback you will get:
 
 - **requestId:** the id of the message you asked to send
 - **requestDescriptor:** the descriptor you sent for this text
-- **requestResult:** "ok" any other result - depending on the request
+- **requestResult:** the command the user said
 - **requestError:** null if all ok, or an error message if an error occured
+
+
+
+
+### Reply to sender with SMS
+
+You can ask BAZZ to send a pre-defined SMS back to sender. To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        String requestId = MyApplication.mBazzLib.requestSendSMS(String senderPhone, null, String descriptor);
+        
+        // --- Or ---
+        
+        String requestId = MyApplication.mBazzLib.requestSendSMS(String senderPhone, String webLinkToVoiceRecording, String descriptor);
+    }
+```
+
+Parameters are:
+
+- **senderPhone:** phone number to send the SMS to
+- **webLinkToVoiceRecording:** you can record a voice reply and upload it to BAZZ servers, then get a web link to the voice reply and send it via SMS
+- **descriptor:** a string to represent the 'meaning' of this voice menu (you can use it in your app when you get the callback of playback finished to identify it)
+
+Return value:
+
+is a String holding the ID of the request - you can use it to get the response from:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
+            @Override
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
+            {
+            	//...
+            
+                return false;
+            }
+        });
+    }
+```
+
+In the callback you will get:
+
+- **requestId:** the id of the message you asked to send
+- **requestDescriptor:** the descriptor you sent for this text
+- **requestResult:** "ok" or null if error
+- **requestError:** null if all ok, or an error message if an error occured
+
+
+
+
+
+### Callback to sender
+
+You can ask BAZZ to call back to sender. To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        String requestId = MyApplication.mBazzLib.requestMakeCall(String senderPhone, String descriptor);
+    }
+```
+
+Parameters are:
+
+- **senderPhone:** phone number to call
+- **descriptor:** a string to represent the 'meaning' of this voice menu (you can use it in your app when you get the callback of playback finished to identify it)
+
+Return value:
+
+is a String holding the ID of the request - you can use it to get the response from:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
+            @Override
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
+            {
+            	//...
+            
+                return false;
+            }
+        });
+    }
+```
+
+In the callback you will get:
+
+- **requestId:** the id of the message you asked to send
+- **requestDescriptor:** the descriptor you sent for this text
+- **requestResult:** "ok" or null if error
+- **requestError:** null if all ok, or an error message if an error occured
+
+
+
+
+### Record a voice reply
+
+You can ask BAZZ to record a voice reply (up to 15 seconds), so you can send it back to sender. To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        String requestId = MyApplication.mBazzLib.requestRecordToSD(String recordingTitle, String descriptor);
+    }
+```
+
+Parameters are:
+
+- **recordingTitle:** a text to display on top of the recording popup
+- **descriptor:** a string to represent the 'meaning' of this voice menu (you can use it in your app when you get the callback of playback finished to identify it)
+
+Return value:
+
+is a String holding the ID of the request - you can use it to get the response from:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
+            @Override
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
+            {
+            	//...
+            
+                return false;
+            }
+        });
+    }
+```
+
+In the callback you will get:
+
+- **requestId:** the id of the message you asked to send
+- **requestDescriptor:** the descriptor you sent for this text
+- **requestResult:** the path to the recorded voice file on your device SD card
+- **requestError:** null if all ok, or an error message if an error occured
+
+
+
+### Upload voice reply to server
+
+After you finished recording the voice reply, the SDK returns a path to the voice file saved on your SD card. You can ask BAZZ to upload the file to our servers, so you can send the link to the sender, and he/she can hear the voice reply. To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        String requestId = MyApplication.mBazzLib.requestUploadRecordingToServer(String recordFilePath, String descriptor);
+    }
+```
+
+Parameters are:
+
+- **recordFilePath:** the path to a voice file on your device SD
+- **descriptor:** a string to represent the 'meaning' of this voice menu (you can use it in your app when you get the callback of playback finished to identify it)
+
+Return value:
+
+is a String holding the ID of the request - you can use it to get the response from:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
+            @Override
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
+            {
+            	//...
+            
+                return false;
+            }
+        });
+    }
+```
+
+In the callback you will get:
+
+- **requestId:** the id of the message you asked to send
+- **requestDescriptor:** the descriptor you sent for this text
+- **requestResult:** a web link to the recorded file on our servers. You can send this link to the server using 'requestSendSMS' (the second parameter).
+- **requestError:** null if all ok, or an error message if an error occured
+
+
+
+
+
+
+
+
+
+
 
 
 
