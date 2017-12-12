@@ -25,6 +25,7 @@ SDK for 3rd party developers to leverage the features of BAZZ.
     * [Message life cycle](#message-life-cycle)
     * [Play prompts using TTS](#play-prompts-using-tts)
     * [Play prompts from resources](#play-prompts-from-resources)
+    * [Play prompts from SD](#play-prompts-from-sd)
     * [Ask for user commands](#ask-for-user-commands)
   * [User analytics](#user-analytics)
     * [New user registration](#new-user-registration)
@@ -1101,7 +1102,8 @@ In the callback you will get:
 
 - **requestId:** the id of the message you asked to send
 - **requestDescriptor:** the descriptor you sent for this text
-- **requestResult:** "ok" or error text
+- **requestResult:** "ok" any other result - depending on the request
+- **requestError:** null if all ok, or an error message if an error occured
 
 ### Play prompts from resources
 
@@ -1142,7 +1144,51 @@ In the callback you will get:
 
 - **requestId:** the id of the message you asked to send
 - **requestDescriptor:** the descriptor you sent for this text
-- **requestResult:** "ok" or error text
+- **requestResult:** "ok" any other result - depending on the request
+- **requestError:** null if all ok, or an error message if an error occured
+
+### Play prompts from SD
+
+You can play a MP3 file from your SD card. To do this:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        String requestId = MyApplication.mBazzLib.requestPlayFromSD(path, descriptor);
+    }
+```
+
+Parameters are:
+
+- **path:** the path to the the MP3 file on your SD card
+- **descriptor:** a string to represent the 'meaning' of this voice prompt (you can use it in your app when you get the callback of playback finished to identify it)
+
+Return value:
+
+is a String holding the ID of the request - you can use it to get the response from:
+
+```java
+    if (MyApplication.mBazzLib != null)
+    {
+        MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
+            @Override
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
+            {
+            	//...
+            
+                return false;
+            }
+        });
+    }
+```
+
+In the callback you will get:
+
+- **requestId:** the id of the message you asked to send
+- **requestDescriptor:** the descriptor you sent for this text
+- **requestResult:** "ok" any other result - depending on the request
+- **requestError:** null if all ok, or an error message if an error occured
+
 
 ### Ask for user commands
 
@@ -1189,7 +1235,8 @@ In the callback you will get:
 
 - **requestId:** the id of the message you asked to send
 - **requestDescriptor:** the descriptor you sent for this text
-- **requestResult:** the command the user selected
+- **requestResult:** "ok" any other result - depending on the request
+- **requestError:** null if all ok, or an error message if an error occured
 
 
 
