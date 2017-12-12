@@ -1022,6 +1022,20 @@ The 'requestPrepareForMessageTreatment' method, as well as the other methods sta
             @Override
             public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
             {
+            	if (requestError!=null)
+            	{
+            		// an error occured - handle it, but do not forget to call 'endMessageTreatment' if you want to terminate the message treatment
+            		
+            		// ...
+            		
+        			MyApplication.mBazzLib.endMessageTreatment(true/false);
+            	} else {
+            	
+            		// request succeeded. continue with 'state machine' according to 'resultDescriptor' (see demo app for an example)
+            		
+            		// ...
+            	}
+            
                 return false;
             }
         });
