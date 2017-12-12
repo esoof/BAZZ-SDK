@@ -1087,9 +1087,10 @@ is a String holding the ID of the request - you can use it to get the response f
     {
         MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
             @Override
-            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult)
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
             {
-                HandleCallbackFromLib("Message reply was "+requestResult);
+            	//...
+            
                 return false;
             }
         });
@@ -1127,9 +1128,10 @@ is a String holding the ID of the request - you can use it to get the response f
     {
         MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
             @Override
-            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult)
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
             {
-                HandleCallbackFromLib("Message reply was "+requestResult);
+            	//...
+            
                 return false;
             }
         });
@@ -1149,11 +1151,11 @@ You can ask BAZZ to record and analyze a vocal command form the user. To do this
 ```java
     if (MyApplication.mBazzLib != null)
     {
-        String requestId = MyApplication.mBazzLib.requestStopContinueVoiceMenu(String title, String subTitle, String descriptor);
+        String requestId = MyApplication.mBazzLib.requestStopContinueVoiceMenu(String title, String subTitle, String descriptor, long timeout);
         
         // --- Or ---
         
-        String requestId = MyApplication.mBazzLib.requestTextCallbackRecordStopVoiceMenu(String title, String subTitle, String descriptor);
+        String requestId = MyApplication.mBazzLib.requestTextCallbackRecordStopVoiceMenu(String title, String subTitle, String descriptor, long timeout);
     }
 ```
 
@@ -1162,6 +1164,7 @@ Parameters are:
 - **title:** text to be displayed at the top of the popup "Mic" showing when waiting for user voice command
 - **subTitle:** text to be displayed at the bottom of the popup "Mic" showing when waiting for user voice command
 - **descriptor:** a string to represent the 'meaning' of this voice menu (you can use it in your app when you get the callback of playback finished to identify it)
+- **timeout:** a long value - the timeout to wait for user to respond
 
 Return value:
 
@@ -1172,9 +1175,10 @@ is a String holding the ID of the request - you can use it to get the response f
     {
         MyApplication.mBazzLib.setOnBazzRequestResultListener(new BazzLib.BazzRequestResultListener() {
             @Override
-            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult)
+            public boolean onRequestResult(String requestId, String requestDescriptor, String requestResult, String requestError)
             {
-                HandleCallbackFromLib("Message reply was "+requestResult);
+            	//...
+            
                 return false;
             }
         });
@@ -1189,11 +1193,6 @@ In the callback you will get:
 
 
 
-  * [User analytics](#user-analytics)
-    * [New user registration](#new-user-registration)
-    * [Event callback](#event-callback)
-
-
 ## User analytics
 
 On some licenses, you can get access to analytics events, so that you can store on your server events and/or info related to user behaviour, etc.
@@ -1205,21 +1204,38 @@ You get details of a new user:
 ```java
     if (MyApplication.mBazzLib != null)
     {
-        MyApplication.mBazzLib.setOnNewUserDetails(new BazzLib.NewUserDetailsListener() {
+        MyApplication.mBazzLib.setOnBazzNewUserDetailsListener(new BazzLib.BazzNewUserDetailsListener() {
             @Override
-            public void onNewUserDetails(	String driverKey, 				// a unique id for the driver
-            								String deviceModel, 			// device model
-            								String deviceFirmwareVersion,	// device firmware version
-            								String deviceCarrier, 			// carrier
-            								String deviceCountry, 			// country
-            								String deviceLocale 			// locale
-            								)
+            public void onNewUserDetails(sUserDetails rec)
             {
                 //... you can save this info to your server.
             }
         });
     }
 ```
+
+The event info object:
+
+```java
+public class sUserDetails {
+
+    public String driverKey;
+    public String DeviceCarrier;
+    public String DeviceCountry;
+    public String AppMode;
+    public String AppTtsLanguage;
+    public String Name;
+    public String Phone;
+    public String Email;
+    public String AppVersion;
+    public String DeviceModel;
+    public String DeviceFirmwareVersion;
+    public String AppLanguage;
+    public String DeviceLocale;
+    public int    DeviceGmtDiffInHours;
+}
+```
+
 
 ### Event callback
 
@@ -1228,7 +1244,7 @@ You get details events happening on the device:
 ```java
     if (MyApplication.mBazzLib != null)
     {
-        MyApplication.mBazzLib.setOnAnalyticsEvent(new BazzLib.AnalyticsEventListener() {
+        MyApplication.mBazzLib.setOnBazzAnalyticsEventListener(new BazzLib.BazzAnalyticsEventListener() {
             @Override
             public void onAnalyticsEvent(sLogEvent eventInfo)
             {
