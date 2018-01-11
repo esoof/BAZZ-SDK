@@ -548,6 +548,43 @@ User may not want ALL his/her Bluetooth devices to activate BAZZ (e.g. connectin
     }
 ```
 
+**New:** If you want to handle this 'ignore' list in your app (with your own UI), you can use the following functions:
+
+* First you get a list of all Bluetooth devices:
+
+Note: if the device Bluetooth is disabled when calling this function, the 'onBluetoothNotEnabled' callback is called. If you return 'false' the SDK will show a popup for the user to allow turning Bluetooth on.
+
+```java
+        MyApplication.mBazzLib.getBluetoothDevicesList(this,new BazzLib.BazzBluetoothDeviceListListener() {
+            @Override
+            public void onBluetoothDeviceList(ArrayList<sBluetoothDevice> arrDevices,
+                                              ArrayList<String> arrShortModeNames,
+                                              ArrayList<String> arrLongModeNames)
+            {
+                // Here is the info about Bluetooth devices (see explanation below)           
+            }
+
+            @Override
+            public boolean onBluetoothNotEnabled(String requestError) {
+            	// This callback is called if the device Bluetooth is disabled.
+            	// if you return 'false' - the SDK will popup the UI to ask user to turn Bluetooth on.
+                return false;
+                }
+            });
+```
+
+- **arrShortModeNames & arrLongModeNames:** for every bluetooth device, there are 8 possible 'Bluetooth profiles' for connection (to allow for optimum connection and messages playback). These are lists of all mode names (short and long texts)
+- **arrDevices:** is a list of all the bluetooth devices found, each entry is a 'sBluetoothDevice' object:
+
+```java
+        public class sBluetoothDevice {
+            public String  name;		// name of paird bluetooth device
+            public boolean ignore;		// SETTING: this is a flag to set if user wants to ignore this device when detecting driving
+            public int     modeIndex;	// SETTING: this is the index of the 'Bluetooth profile' for this device
+            public String  modeName;	// this is the short name for the current 'Bluetooth profile' for this device
+        }
+```
+
 ## Incoming Messages
 
 BAZZ is all about treating messages. It can intercept incoming messages from various sources, such as SMS/TEXT, Whatsapp, etc. and allow the user to hear & respond to them using voice only.
@@ -955,6 +992,43 @@ Due to the complexity of Bluetooth interface standards, user may have to configu
     {
         MyApplication.mBazzLib.popupBluetoothDeviceSettingsUI();
     }
+```
+
+**New:** If you want to handle this 'Bluetooth profile' list in your app (with your own UI), you can use the following functions:
+
+* First you get a list of all Bluetooth devices:
+
+Note: if the device Bluetooth is disabled when calling this function, the 'onBluetoothNotEnabled' callback is called. If you return 'false' the SDK will show a popup for the user to allow turning Bluetooth on.
+
+```java
+        MyApplication.mBazzLib.getBluetoothDevicesList(this,new BazzLib.BazzBluetoothDeviceListListener() {
+            @Override
+            public void onBluetoothDeviceList(ArrayList<sBluetoothDevice> arrDevices,
+                                              ArrayList<String> arrShortModeNames,
+                                              ArrayList<String> arrLongModeNames)
+            {
+                // Here is the info about Bluetooth devices (see explanation below)           
+            }
+
+            @Override
+            public boolean onBluetoothNotEnabled(String requestError) {
+            	// This callback is called if the device Bluetooth is disabled.
+            	// if you return 'false' - the SDK will popup the UI to ask user to turn Bluetooth on.
+                return false;
+                }
+            });
+```
+
+- **arrShortModeNames & arrLongModeNames:** for every bluetooth device, there are 8 possible 'Bluetooth profiles' for connection (to allow for optimum connection and messages playback). These are lists of all mode names (short and long texts)
+- **arrDevices:** is a list of all the bluetooth devices found, each entry is a 'sBluetoothDevice' object:
+
+```java
+        public class sBluetoothDevice {
+            public String  name;		// name of paird bluetooth device
+            public boolean ignore;		// SETTING: this is a flag to set if user wants to ignore this device when detecting driving
+            public int     modeIndex;	// SETTING: this is the index of the 'Bluetooth profile' for this device
+            public String  modeName;	// this is the short name for the current 'Bluetooth profile' for this device
+        }
 ```
 
 
