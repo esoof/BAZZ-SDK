@@ -253,13 +253,14 @@ the operation of BAZZ...)
 
 - In the '**onCreate**' function, add the following lines:
 
+(for existing users - as mentioned above, we changed the way the 'init' function works, so use this code)
 
 ```java
         mBazzLib = new BazzLib();
 
         if (mBazzLib!=null)
         {
-        	boolean bAllowSDKToShowPermissionsUI = false;
+            boolean bAllowSDKToShowPermissionsUI = false;
         
             // APP_ID is a string you will receive from us when we register your app
             mBazzLib.init(this, APP_ID, bAllowSDKToShowPermissionsUI, new BazzLib.BazzInitDoneListener() {
@@ -269,10 +270,10 @@ the operation of BAZZ...)
                     if (error==null)
                     {
 			            // You must call these functions, too to initialize the app properly
-           				mBazzLib.setAppName("<Your app user-friendly name>");
-            			mBazzLib.setMainActivity("<Class name of your main activity (e.g. MainActivity)>");
+           			    mBazzLib.setAppName("<Your app user-friendly name>");
+            		    mBazzLib.setMainActivity("<Class name of your main activity (e.g. MainActivity)>");
 
-						// This call allows you to control what elements of UI are hidden
+					    // This call allows you to control what elements of UI are hidden
                         mBazzLib.setInternalUIOptions(
                                 bShowMicPopup,
                                 bShowStartedDrivingPopup,
