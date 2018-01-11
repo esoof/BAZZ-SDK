@@ -71,12 +71,17 @@ Done. Now you can start integrating the BAZZ SDK as explained in the next sectio
 
 ## What's new in version 1.04.27
 
-* ```init ``` function: Initialization process is asyncronous, so added a variation of the 'init' function to support async operation - see 'Initializing' section.
+* ```init ``` function: Initialization process is asynchronous, so added a variation of the 'init' function to support async operation - see 'Initializing' section.
 
-* ```init ``` function: 
+* ```handlePermissions ``` function: Since we added the option for your application to instruct the SDK not to handle permissions, thgis function is added to allow you to query state of permissions.
 
-* ```init ``` function: 
+* ```setInternalUIOptions ``` function: Added a function to allow your application to control the display of various UI elements (e.g. the MIC popup while recording user voice).
 
+* ```getBluetoothDevicesList & setBluetoothDevice ``` functions: Added to allow your app to handle Bluetooth settings of the SDK (in stead of relying on the SDK internal UI).
+
+* ```getWhatsAppGroupsInfoList & setWhatsAppGroupInfo ``` functions: Added to allow your app to handle WhatsApp groups blocking settings of the SDK (in stead of relying on the SDK internal UI).
+
+* ```getTTSlanguagesList, get/setEnglishTTSLanguage, get/setOtherTTSLanguage, getTTSLangDisplayName  ``` functions: Added to allow your app to handle TTS settings of the SDK (in stead of relying on the SDK internal UI).
 
 
 
