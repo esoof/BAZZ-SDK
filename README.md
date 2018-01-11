@@ -308,12 +308,12 @@ Parameters:
 The other new paramater to the 'init' function is a listener, where the SDK will notify the app of completion and results of the SDK initialization:
 
 ```java
-		new BazzLib.BazzInitDoneListener() {
-                @Override
+        new BazzLib.BazzInitDoneListener() {
+            @Override
                 public void onBazzInitDone(String error, ArrayList<String> missingPermissions)
                 {
- 				}
-			}
+                }
+            }
 ```
 
 In the callback you will get:
