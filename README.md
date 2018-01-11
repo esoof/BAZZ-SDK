@@ -279,25 +279,25 @@ the operation of BAZZ...)
                                 bShowStartedDrivingPopup,
                                 bShowStateInNotifications);
 
-            			// These calls enable treatment of the IM messaging apps
-            			mBazzLib.setIncomingWorkWithWhatsapp(true);
-            			mBazzLib.setIncomingWorkWithMessenger(true);
-            			mBazzLib.setIncomingWorkWithLine(true);
-            			mBazzLib.setIncomingWorkWithGmail(true);
-            			mBazzLib.setIncomingWorkWithLine(true);
+                        // These calls enable treatment of the IM messaging apps
+                        mBazzLib.setIncomingWorkWithWhatsapp(true);
+                        mBazzLib.setIncomingWorkWithMessenger(true);
+                        mBazzLib.setIncomingWorkWithLine(true);
+                        mBazzLib.setIncomingWorkWithGmail(true);
+                        mBazzLib.setIncomingWorkWithLine(true);
 
-            			// *** You must add this to enable access to IM messaging apps ***
-            			bindService(new Intent(getApplicationContext(), BazzNotificationServiceLink.class), new ServiceConnection() {
-                			@Override
-                			public void onServiceConnected(ComponentName className, IBinder service) {
-                			}
-                			@Override
-                			public void onServiceDisconnected(ComponentName arg0) {
-                			}
-            			}, Context.BIND_AUTO_CREATE);
-					}
-				}
-			});					            
+                        // *** You must add this to enable access to IM messaging apps ***
+                        bindService(new Intent(getApplicationContext(), BazzNotificationServiceLink.class), new ServiceConnection() {
+                            @Override
+                            public void onServiceConnected(ComponentName className, IBinder service) {
+                            }
+                            @Override
+                            public void onServiceDisconnected(ComponentName arg0) {
+                            }
+                        }, Context.BIND_AUTO_CREATE);
+                    }
+                }
+            });					            
         }
 ```
 
