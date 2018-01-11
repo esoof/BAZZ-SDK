@@ -20,7 +20,7 @@ SDK for 3rd party developers to leverage the features of BAZZ.
     * [Controlling flow](#controlling-flow)
     * [Controlling playback](#controlling-playback)
     * [Internal setting screens](#internal-setting-screens)
-    * [More settings](#more-playback)
+    * [More settings](#more-settings)
   * [Handle user interaction yourself](#handle-user-interaction-yourself)
     * [Take over treatment of messages](#take-over-treatment-of-messages)
     * [Message life cycle](#message-life-cycle)
