@@ -761,7 +761,7 @@ You can get the current setting:
     }
 ```
 
-###Special case: Whatsapp group messages
+### Special case: Whatsapp group messages
 
 For Whatsapp **group** messages, there is an additional configuration you can make:
 - do not play them at all
