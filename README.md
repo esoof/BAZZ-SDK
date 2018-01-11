@@ -253,6 +253,77 @@ the operation of BAZZ...)
 
 - In the '**onCreate**' function, add the following lines:
 
+
+```java
+        mBazzLib = new BazzLib();
+
+        if (mBazzLib!=null)
+        {
+        	boolean bAllowSDKToShowPermissionsUI = false;
+        
+            // APP_ID is a string you will receive from us when we register your app
+            mBazzLib.init(this, APP_ID, bAllowSDKToShowPermissionsUI, new BazzLib.BazzInitDoneListener() {
+                @Override
+                public void onBazzInitDone(String error, ArrayList<String> missingPermissions)
+                {
+                    if (error==null)
+                    {
+			            // You must call these functions, too to initialize the app properly
+           				mBazzLib.setAppName("<Your app user-friendly name>");
+            			mBazzLib.setMainActivity("<Class name of your main activity (e.g. MainActivity)>");
+
+						// This call allows you to control what elements of UI are hidden
+                        mBazzLib.setInternalUIOptions(
+                                bShowMicPopup,
+                                bShowStartedDrivingPopup,
+                                bShowStateInNotifications);
+
+            			// These calls enable treatment of the IM messaging apps
+            			mBazzLib.setIncomingWorkWithWhatsapp(true);
+            			mBazzLib.setIncomingWorkWithMessenger(true);
+            			mBazzLib.setIncomingWorkWithLine(true);
+            			mBazzLib.setIncomingWorkWithGmail(true);
+            			mBazzLib.setIncomingWorkWithLine(true);
+
+            			// *** You must add this to enable access to IM messaging apps ***
+            			bindService(new Intent(getApplicationContext(), BazzNotificationServiceLink.class), new ServiceConnection() {
+                			@Override
+                			public void onServiceConnected(ComponentName className, IBinder service) {
+                			}
+                			@Override
+                			public void onServiceDisconnected(ComponentName arg0) {
+                			}
+            			}, Context.BIND_AUTO_CREATE);
+					}
+				}
+			});					            
+        }
+```
+
+Parameters:
+
+- **bAllowSDKToShowPermissionsUI:** if 'true' then SDK will display all permission UI, if 'false' - your application is responsible to get permissions.
+
+The other new paramater to the 'init' function is a listener, where the SDK will notify the app of completion and results of the SDK initialization:
+
+```java
+		new BazzLib.BazzInitDoneListener() {
+                @Override
+                public void onBazzInitDone(String error, ArrayList<String> missingPermissions)
+                {
+ 				}
+			}
+```
+
+In the callback you will get:
+
+- **error:** null if all ok, or an error message if an error occured
+- **missingPermissions:** an array of missing permissions
+
+
+
+**Note:** For the sake of backward compatibility, the old way to initialize still works, but it is async, and defaults to SDK displaying the permissions UI.
+
 ```java
         mBazzLib = new BazzLib();
 
