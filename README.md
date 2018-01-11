@@ -71,7 +71,17 @@ Done. Now you can start integrating the BAZZ SDK as explained in the next sectio
 
 ## What's new in version 1.04.27
 
-sdsdsds
+* ```java init ```: Initialization process is asyncronous, so added a variation of the 'init' function to support async operation - see 'Initializing' section.
+
+* ```java init ```: 
+
+* ```java init ```: 
+
+* ```java init ```: 
+
+
+
+
 
 # Usage
 
