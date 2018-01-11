@@ -269,11 +269,11 @@ the operation of BAZZ...)
                 {
                     if (error==null)
                     {
-			            // You must call these functions, too to initialize the app properly
-           			    mBazzLib.setAppName("<Your app user-friendly name>");
-            		    mBazzLib.setMainActivity("<Class name of your main activity (e.g. MainActivity)>");
+                        // You must call these functions, too to initialize the app properly
+                        mBazzLib.setAppName("<Your app user-friendly name>");
+                        mBazzLib.setMainActivity("<Class name of your main activity (e.g. MainActivity)>");
 
-					    // This call allows you to control what elements of UI are hidden
+                        // This call allows you to control what elements of UI are hidden
                         mBazzLib.setInternalUIOptions(
                                 bShowMicPopup,
                                 bShowStartedDrivingPopup,
