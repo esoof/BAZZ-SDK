@@ -1085,6 +1085,51 @@ You can configure BAZZ to handle multiple languages for text content readout. To
     }
 ```
 
+**New:** If you want to handle TTS settings in your app (with your own UI), you can use the following functions:
+
+* First you get a list of all available TTS languages:
+
+To allow working with multi-language messages, the SDK separates the TTS lists to 'English' TTS, and 'Other' TTS.
+These are 2 settings that you need to allow.
+
+```java
+        MyApplication.mBazzLib.getTTSlanguagesList(this, new BazzLib.BazzTTSLanguagesListListener() {
+            @Override
+            public void onTTSLanguagesList(ArrayList<String> arrEnglishLanguages,
+                                           ArrayList<String> arrOtherLanguages,
+                                           String errorMsg)
+            {
+                Log.i("BAZZ_SDK","dbg: ### Eng TTS: "+arrEnglishLanguages.toString());
+                Log.i("BAZZ_SDK","dbg: ### Other TTS: "+arrOtherLanguages.toString());
+                Log.i("BAZZ_SDK","dbg: ### Error: "+errorMsg);
+            }
+        });
+```
+
+- **arrEnglishLanguages:** List of English TTS languages, in the form of 'eng-usa', 'eng-aus' etc. (and an additional one - the default of 'eng-bazz', which is handled internally)
+- **arrOtherLanguages:** List of Other TTS languages, in the form of 'fra-fra' etc.
+
+* How you can show a list of available options, and highlight the current selection in 'English' and 'Other':
+
+```java
+        String englishTTSLang = getEnglishTTSLanguage(Context ctx);
+        String otherTTSLang   = getOtherTTSLanguage(Context ctx);
+```
+
+to make your languages display more user-friendly, use the following to translate the 'xxx-yyy' code to language name:
+
+```java
+        String displayName = getTTSLangDisplayName(Context ctx, String ttsCode);
+```
+
+* Then you can change the settings by calling:
+
+```java
+        setEnglishTTSLanguage(Context ctx, String englishTTSLang);
+        setOtherTTSLanguage  (Context ctx, String otherTTSLang);
+```
+
+
 
 **System settings required - enabling 'notification access' to your app**
 
