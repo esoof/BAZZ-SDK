@@ -5,6 +5,7 @@ SDK for 3rd party developers to leverage the features of BAZZ.
 
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
+* [Release notes](#release-notes)
 * [Usage](#usage)
   * [Preparing your app](#preparing-your-app)
     * [Adding classes](#adding-classes)
@@ -65,6 +66,12 @@ To add it to your project, follow the steps below:
 5. Select your **app** module in the left pane, and click the '**Dependencies**' tab. Click the **plus (+)** sign, and select '**Module dependency**'. Select '**:bazz_sdk**', and click '**OK**' twice.
 
 Done. Now you can start integrating the BAZZ SDK as explained in the next sections.
+
+# Release notes
+
+## What's new in version 1.04.27
+
+sdsdsds
 
 # Usage
 
