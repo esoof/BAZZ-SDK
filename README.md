@@ -803,7 +803,7 @@ User may not want BAZZ to read ALL his/her Whatsapp groups (some of them can be 
 
 
 
-###Incoming calls
+### Incoming calls
 
 You can also control treatment of incoming **calls**:
 
@@ -823,7 +823,7 @@ You can get the current setting:
     }
 ```
 
-###Sound notifications from other apps
+### Sound notifications from other apps
 
 You can mute/unmute sound of notifications from other apps:
 
@@ -843,7 +843,7 @@ You can get the current setting:
     }
 ```
 
-###Blocking unknown senders
+### Blocking unknown senders
 
 And finally - you can ignore messages from unknown senders:
 
@@ -863,7 +863,7 @@ You can get the current setting:
     }
 ```
 
-###Setting predefined TEXT reply
+### Setting predefined TEXT reply
 
 You can change the pre-defined TEXT:
 
