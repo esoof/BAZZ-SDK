@@ -550,7 +550,7 @@ User may not want ALL his/her Bluetooth devices to activate BAZZ (e.g. connectin
 
 **New:** If you want to handle this 'ignore' list in your app (with your own UI), you can use the following functions:
 
-* First you get a list of all Bluetooth devices:
+First you get a list of all Bluetooth devices:
 
 Note: if the device Bluetooth is disabled when calling this function, the 'onBluetoothNotEnabled' callback is called. If you return 'false' the SDK will show a popup for the user to allow turning Bluetooth on.
 
@@ -585,7 +585,7 @@ Note: if the device Bluetooth is disabled when calling this function, the 'onBlu
         }
 ```
 
-* Then you can change ignore settings in an item in the group, and call:
+Then you can change ignore settings in an item in the group, and call:
 
 ```java
         setBluetoothDevice(Context ctx, sBluetoothDevice newRec);
@@ -849,7 +849,7 @@ User may not want BAZZ to read ALL his/her Whatsapp groups (some of them can be 
 
 **New:** If you want to handle this 'ignore' list in your app (with your own UI), you can use the following functions:
 
-* First you get a list of all WhatsApp groups:
+First you get a list of all WhatsApp groups:
 
 ```java
         ArrayList<WhatsAppGroupHistoryRec> arrGroups =  MyApplication.mBazzLib.getWhatsAppGroupsInfoList(this);
@@ -866,7 +866,7 @@ Where:
         }
 ```
 
-* Then you can change ignore settings in an item in the group, and call:
+Then you can change ignore settings in an item in the group, and call:
 
 ```java
         setWhatsAppGroupInfo(Context ctx, WhatsAppGroupHistoryRec newRec);
@@ -1032,7 +1032,7 @@ Due to the complexity of Bluetooth interface standards, user may have to configu
 
 **New:** If you want to handle this 'Bluetooth profile' list in your app (with your own UI), you can use the following functions:
 
-* First you get a list of all Bluetooth devices:
+First you get a list of all Bluetooth devices:
 
 Note: if the device Bluetooth is disabled when calling this function, the 'onBluetoothNotEnabled' callback is called. If you return 'false' the SDK will show a popup for the user to allow turning Bluetooth on.
 
@@ -1067,7 +1067,7 @@ Note: if the device Bluetooth is disabled when calling this function, the 'onBlu
         }
 ```
 
-* Then you can change ignore settings in an item in the group, and call:
+Then you can change ignore settings in an item in the group, and call:
 
 ```java
         setBluetoothDevice(Context ctx, sBluetoothDevice newRec);
@@ -1087,7 +1087,7 @@ You can configure BAZZ to handle multiple languages for text content readout. To
 
 **New:** If you want to handle TTS settings in your app (with your own UI), you can use the following functions:
 
-* First you get a list of all available TTS languages:
+First you get a list of all available TTS languages:
 
 To allow working with multi-language messages, the SDK separates the TTS lists to 'English' TTS, and 'Other' TTS.
 These are 2 settings that you need to allow.
@@ -1109,7 +1109,7 @@ These are 2 settings that you need to allow.
 - **arrEnglishLanguages:** List of English TTS languages, in the form of 'eng-usa', 'eng-aus' etc. (and an additional one - the default of 'eng-bazz', which is handled internally)
 - **arrOtherLanguages:** List of Other TTS languages, in the form of 'fra-fra' etc.
 
-* How you can show a list of available options, and highlight the current selection in 'English' and 'Other':
+Now you can show a list of available options, and highlight the current selection in 'English' and 'Other':
 
 ```java
         String englishTTSLang = getEnglishTTSLanguage(Context ctx);
@@ -1122,7 +1122,7 @@ to make your languages display more user-friendly, use the following to translat
         String displayName = getTTSLangDisplayName(Context ctx, String ttsCode);
 ```
 
-* Then you can change the settings by calling:
+Then you can change the settings by calling:
 
 ```java
         setEnglishTTSLanguage(Context ctx, String englishTTSLang);
