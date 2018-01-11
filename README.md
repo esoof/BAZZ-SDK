@@ -585,6 +585,15 @@ Note: if the device Bluetooth is disabled when calling this function, the 'onBlu
         }
 ```
 
+* Then you can change ignore settings in an item in the group, and call:
+
+```java
+        setBluetoothDevice(Context ctx, sBluetoothDevice newRec);
+```
+
+
+
+
 ## Incoming Messages
 
 BAZZ is all about treating messages. It can intercept incoming messages from various sources, such as SMS/TEXT, Whatsapp, etc. and allow the user to hear & respond to them using voice only.
@@ -838,6 +847,33 @@ User may not want BAZZ to read ALL his/her Whatsapp groups (some of them can be 
     }
 ```
 
+**New:** If you want to handle this 'ignore' list in your app (with your own UI), you can use the following functions:
+
+* First you get a list of all WhatsApp groups:
+
+```java
+        ArrayList<WhatsAppGroupHistoryRec> arrGroups =  MyApplication.mBazzLib.getWhatsAppGroupsInfoList(this);
+```
+
+Where:
+
+```java
+        public class WhatsAppGroupHistoryRec {
+
+            public String name;		// name of group
+            public int    blocked;	// SETTING: 'true' to ignore this group
+            public long   rowId;
+        }
+```
+
+* Then you can change ignore settings in an item in the group, and call:
+
+```java
+        setWhatsAppGroupInfo(Context ctx, WhatsAppGroupHistoryRec newRec);
+```
+
+
+
 
 
 ### Incoming calls
@@ -1029,6 +1065,12 @@ Note: if the device Bluetooth is disabled when calling this function, the 'onBlu
             public int     modeIndex;	// SETTING: this is the index of the 'Bluetooth profile' for this device
             public String  modeName;	// this is the short name for the current 'Bluetooth profile' for this device
         }
+```
+
+* Then you can change ignore settings in an item in the group, and call:
+
+```java
+        setBluetoothDevice(Context ctx, sBluetoothDevice newRec);
 ```
 
 
